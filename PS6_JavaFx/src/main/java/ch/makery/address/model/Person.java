@@ -1,6 +1,9 @@
 package ch.makery.address.model;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.UUID;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -21,14 +24,35 @@ public class Person extends PersonDomainModel {
     }
 
     public Person(String firstName, String lastName, String street, int postalCode, String city, Object birthday ) {
-        this.setFirstName(firstName);
+    	this.setPersonID(PersonID);
+    	this.setFirstName(firstName);
         this.setLastName(lastName);
 
         // Some initial dummy data, just for convenient testing.
         this.setStreet(street);
         this.setPostalCode(postalCode);
         this.setCity(city);
-        this.setBirthday((LocalDate.of(1999, 2, 21)));
+        this.setBirthday((Date)birthday);
     }
 
+    public StringProperty alterFirstName(){
+    	return new SimpleStringProperty(firstName);
+    }
+    
+    public StringProperty alterLastName(){
+    	return new SimpleStringProperty(lastName);
+    }
+    
+    public StringProperty alterStreetName(){
+    	return new SimpleStringProperty(street);
+    }
+    
+    public IntegerProperty alterPostalCode(){
+    	return new SimpleIntegerProperty(postalCode);
+    }
+    
+    public StringProperty alterCity(){
+    	return new SimpleStringProperty(city);
+    }
+    
 }

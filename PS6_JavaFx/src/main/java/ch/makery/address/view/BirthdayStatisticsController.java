@@ -52,7 +52,7 @@ public class BirthdayStatisticsController {
         // Count the number of people having their birthday in a specific month.
         int[] monthCounter = new int[12];
         for (Person p : persons) {
-            int month = p.getBirthday().getMonthValue() - 1;
+            int month = p.getBirthday().getMonth() - 1;
             monthCounter[month]++;
         }
 
